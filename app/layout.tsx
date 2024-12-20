@@ -6,6 +6,7 @@ import {
   UserButton,
 } from '@clerk/nextjs';
 import './globals.css';
+import { zhCN } from '@clerk/localizations';
 
 export default function RootLayout({
   children,
@@ -13,14 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
+    <ClerkProvider localization={zhCN}>
+      <html lang="zh-CN">
         <body>
           <SignedOut>
-            <SignInButton />
+            <SignInButton mode="modal">登录</SignInButton>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <UserButton showName={true} />
           </SignedIn>
           {children}
         </body>
